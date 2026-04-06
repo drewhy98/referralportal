@@ -1,0 +1,90 @@
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f0f4f5;
+  color:#212b32;
+}
+
+.container{
+  max-width:720px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+/* Header */
+
+.header{
+  background:#005eb8;
+  padding:12px 20px;
+}
+
+.header-inner{
+  max-width:960px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.logo{
+  height:40px;
+}
+
+.service-name{
+  color:white;
+  font-size:1.3rem;
+  font-weight:bold;
+}
+
+/* Panels */
+
+.panel{
+  background:white;
+  padding:25px;
+  border-left:6px solid #005eb8;
+}
+
+/* Buttons */
+
+.button{
+  display:inline-block;
+  background:#007f3b;
+  color:white;
+  padding:12px 18px;
+  text-decoration:none;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+button{
+  background:#007f3b;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  font-weight:bold;
+  margin-top:20px;
+  cursor:pointer;
+}
+
+/* Forms */
+
+input{
+  padding:10px;
+  font-size:1.1rem;
+  margin-top:10px;
+}
+
+.radio-option{
+  margin-top:10px;
+}
+
+.hint{
+  color:#4c6272;
+  margin-top:5px;
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  font-size:0.9rem;
+}
