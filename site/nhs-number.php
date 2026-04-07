@@ -6,6 +6,7 @@ if(isset($_POST['nhs_number'])){
     header("Location: assistancechecker.php");
     exit();
 }
+?>
 
 <?php include "includes/header.php"; ?>
 
