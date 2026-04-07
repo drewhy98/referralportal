@@ -16,6 +16,11 @@
 
     <input type="text" name="relationship">
 
+    
+    <h2>Your first name and last name</h2>
+
+    <input type="text" name="fullname">
+
     <button type="submit">Continue</button>
 
   </form>
