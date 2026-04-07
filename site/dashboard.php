@@ -23,45 +23,48 @@ $stmt->execute([$nhs_number]);
 $referrals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="panel">
-    <h1>Your Referrals</h1>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
 
-    <?php if (empty($referrals)): ?>
-        <p>No referrals found for this NHS number.</p>
-    <?php else: ?>
-        <table id="myTable" class="display">
-            <thead>
-                <tr>
-                    <th>Referral ID</th>
-                    <th>Date</th>
-                    <th>Specialty</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($referrals as $ref): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($ref['id']); ?></td>
-                        <td><?php echo htmlspecialchars($ref['ref_date']); ?></td>
-                        <td><?php echo htmlspecialchars($ref['specialty']); ?></td>
-                        <td><?php echo htmlspecialchars($ref['details']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php endif; ?>
+<h2 class="page-title">Your Referrals</h2>
+
+<div class="table-container">
+
+<?php if (empty($referrals)): ?>
+    <p>No referrals found for this NHS number.</p>
+<?php else: ?>
+    <table id="referralsTable" class="display">
+        <thead>
+            <tr>
+                <th>Referral ID</th>
+                <th>Date</th>
+                <th>Specialty</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($referrals as $ref): ?>
+            <tr>
+                <td><?= htmlspecialchars($ref['id']); ?></td>
+                <td><?= date("F j, Y", strtotime($ref['ref_date'])); ?></td>
+                <td><?= htmlspecialchars($ref['specialty']); ?></td>
+                <td><?= htmlspecialchars($ref['details']); ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+
 </div>
 
-<!-- Include DataTables CSS -->
-<link rel="stylesheet" href="//cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
-
-<!-- Include DataTables JS -->
-<script src="//cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialise DataTable
-    let table = new DataTable('#myTable');
+$(document).ready(function() {
+    $('#referralsTable').DataTable({
+        pageLength: 10,
+        order: [[1, "desc"]] // sort by date descending
+    });
 });
 </script>
 
