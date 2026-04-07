@@ -12,8 +12,6 @@ if(!isset($_SESSION['nhs_number']) || empty($_SESSION['nhs_number'])){
     exit();
 }
 
-include "includes/header.php";
-?>
 
 include "includes/header.php";
 ?>
