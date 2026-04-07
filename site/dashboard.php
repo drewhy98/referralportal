@@ -1,6 +1,11 @@
 <?php
 session_start();
 include "includes/dbconnect.php";
+$breadcrumbs = [
+    ['title' => 'Home', 'url' => 'index.php'],
+    ['title' => 'Check Referrals', 'url' => 'assistancechecker.php'],
+    ['title' => 'Referral Dashboard', 'url' => 'dashboard.php'],
+];
 include "includes/header.php";
 
 // Get NHS number from session
