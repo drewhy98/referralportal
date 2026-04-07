@@ -38,6 +38,14 @@ body{
   font-weight:bold;
 }
 
+/* Panels */
+
+.panel{
+  background:white;
+  padding:25px;
+  border-left:6px solid #005eb8;
+}
+
 /* Buttons */
 
 .button{
