@@ -2,7 +2,7 @@
 
 <div class="panel">
 
-  <form action="dashboard.php" method="POST">
+  <form action="assistancechecker.php" method="POST">
 
     <h1>What is your NHS number?</h1>
 
