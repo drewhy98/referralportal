@@ -1,5 +1,4 @@
-
-include "db_connect.php"; 
+<?php include "includes/dbconnect.php"; ?>
 <?php include "includes/header.php"; ?>
 <?php include "refmatcher.php"; ?>
 
