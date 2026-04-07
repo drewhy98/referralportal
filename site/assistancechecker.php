@@ -1,4 +1,19 @@
-<?php include "includes/header.php"; ?>
+<?php
+session_start();
+
+// Save NHS number if coming from the previous form
+if(isset($_POST['nhs_number'])){
+    $_SESSION['nhs_number'] = $_POST['nhs_number'];
+}
+
+// Check if NHS number exists
+if(!isset($_SESSION['nhs_number']) || empty($_SESSION['nhs_number'])){
+    header("Location: nhs-number.php?msg=Please+provide+your+NHS+number+first");
+    exit();
+}
+
+include "includes/header.php";
+?>
 
 <div class="panel">
 
