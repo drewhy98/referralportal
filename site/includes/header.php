@@ -20,7 +20,7 @@ src="https://cdn-lhr.brandkit.com/accounts/165/files/509Y0S1A8B9NJB96WVVZFXTWE9/
 alt="NHS Wales"
 class="logo">
 
-<span class="service-name">
+<h1 class="service-name">Referral Tracking Service</h1>
 Referral Tracking Service
 </span>
 
