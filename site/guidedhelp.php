@@ -2,8 +2,14 @@
 session_start(); // start session at the top
 
 include "includes/dbconnect.php";
-include "includes/header.php";
 include "refmatcher.php";
+
+$breadcrumbs = [
+    ['title' => 'Home', 'url' => 'index.php'],
+    ['title' => 'Start Again', 'url' => 'assistancechecker.php'],
+    ['title' => 'View Referral Dashboard', 'url' => 'dashboard.php'],
+];
+include "includes/header.php";
 
 $match = null;
 
