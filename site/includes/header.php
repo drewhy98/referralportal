@@ -16,7 +16,7 @@
 <div class="header-inner">
 
 <img 
-src="https://cdn-lhr.brandkit.com/accounts/165/files/509Y0S1A8B9NJB96WVVZFXTWE9/179628-preview.webp?v=63866260163"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeM_VTB_wCGEEJKPNMiUOgEHqXyVLOMnE4Ug&s"
 alt="NHS Wales"
 class="logo">
 
