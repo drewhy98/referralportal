@@ -1,4 +1,4 @@
-<?php include "includes/dbconnect.php"; ?>
+<?php include "includes/dbconnect.php";
 
 // Only process if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
