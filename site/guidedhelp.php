@@ -1,12 +1,14 @@
 <?php
+session_start(); // start session at the top
+
 include "includes/dbconnect.php";
 include "includes/header.php";
 include "refmatcher.php";
 
 $match = null;
 
-// Ensure NHS number is passed from previous page
-$nhs_number = trim($_POST['nhs_number'] ?? '');
+// Get NHS number from session
+$nhs_number = trim($_SESSION['nhs_number'] ?? '');
 
 if (!$nhs_number) {
     // Redirect if NHS number missing
