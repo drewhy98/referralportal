@@ -21,7 +21,6 @@ alt="NHS Wales"
 class="logo">
 
 <h1 class="service-name">Referral Tracking Service</h1>
-Referral Tracking Service
 </span>
 
 </div>
