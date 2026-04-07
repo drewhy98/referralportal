@@ -38,6 +38,46 @@ body{
   font-weight:bold;
 }
 
+
+/* Breadcrumbs */
+
+.breadcrumb-container {
+  margin: 15px 0;
+}
+
+.breadcrumb {
+  background: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.breadcrumb li {
+  display: inline;
+}
+
+.breadcrumb li+li:before {
+  content: "›"; /* separator */
+  padding: 0 8px;
+  color: #555;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #005eb8; /* match header blue */
+  font-weight: bold;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #212b32; /* dark text for current page */
+  font-weight: bold;
+}
+
 /* Panels */
 
 .panel{
