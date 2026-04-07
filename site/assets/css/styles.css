@@ -15,7 +15,7 @@ body{
 
 .header{
   background:#005eb8;
-  padding:0 20px; /* remove vertical padding */
+  padding:15px 20px;
 }
 
 .header-inner{
@@ -24,20 +24,18 @@ body{
   display:flex;
   align-items:center;
   gap:20px;
-  height:80px; /* controls banner height */
 }
 
 .logo{
-  height:100%; /* makes logo fill banner height */
+  height:55px; /* slightly bigger but not stretched */
   width:auto;
 }
 
 .service-name{
   color:white;
-  font-size:2rem; /* bigger title */
+  font-size:2.2rem; /* much bigger title */
   font-weight:bold;
 }
-
 /* Panels */
 
 .panel{
