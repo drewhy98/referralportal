@@ -1,35 +1,37 @@
-<?php include "includes/dbconnect.php"; ?>
-<?php include "includes/header.php"; ?>
-<?php include "refmatcher.php"; ?>
-
-
-<div class="panel">
-
 <?php
+include "includes/dbconnect.php";
+include "includes/header.php";
+include "refmatcher.php";
+
 $match = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $nhs_number = $_POST['nhs_number'] ?? '';
+    $nhs_number = trim($_POST['nhs_number'] ?? '');
     $ref_date = $_POST['ref_date'] ?? 'unknown';
     $ref_spec_known = $_POST['ref_spec'] ?? 'no';
     $spec_name = trim($_POST['spec_name'] ?? '');
 
-    // Redirect immediately if user unsure about date or specialty
+    // Redirect if unsure about date or specialty
     if ($ref_date === 'unknown' || ($ref_spec_known === 'no' && $spec_name === '')) {
         header("Location: dashboard.php?msg=" . urlencode("Not able to locate a match"));
         exit;
     }
 
-    // Use refmatcher.php function to check DB
+    // Use refmatcher function to check DB
     $match = findReferral($db, $nhs_number, $ref_date, $spec_name, $ref_spec_known === 'yes');
 }
 ?>
 
+<div class="panel">
+
 <?php if (!$match): ?>
-    <!-- Show form only if no match -->
     <form action="" method="POST">
         <h1>Referral Details</h1>
+
+        <!-- NHS Number -->
+        <label for="nhs_number">Enter NHS number:</label>
+        <input type="text" name="nhs_number" id="nhs_number" required style="margin-bottom:15px; display:block;">
 
         <!-- Referral date question -->
         <p>When was the referral made?</p>
@@ -79,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" style="margin-top:20px;">Check Referral</button>
     </form>
 <?php else: ?>
-    <!-- Match found, hide form -->
     <h2>Referral Details Found</h2>
     <p><?php echo htmlspecialchars($match['details']); ?></p>
 <?php endif; ?>
