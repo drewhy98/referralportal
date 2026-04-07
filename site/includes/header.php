@@ -28,22 +28,21 @@
 <main class="container">
 
 <?php
-// Breadcrumb system: check if $breadcrumbs is set
+// Check if $breadcrumbs is defined on the page
 if (!isset($breadcrumbs)) $breadcrumbs = [];
 
 if (!empty($breadcrumbs)): ?>
-<nav aria-label="breadcrumb" class="breadcrumb-container" style="margin: 15px 0;">
-    <ol class="breadcrumb">
-        <?php
-        $last_index = count($breadcrumbs) - 1;
-        foreach ($breadcrumbs as $i => $crumb):
-            if ($i == $last_index): ?>
-                <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($crumb['title']); ?></li>
-            <?php else: ?>
-                <li class="breadcrumb-item"><a href="<?= htmlspecialchars($crumb['url']); ?>"><?= htmlspecialchars($crumb['title']); ?></a></li>
-            <?php endif;
-        endforeach;
-        ?>
-    </ol>
+<nav class="breadcrumb-container" style="margin:15px 0; font-size:0.95rem;">
+    <?php
+    $last_index = count($breadcrumbs) - 1;
+    foreach ($breadcrumbs as $i => $crumb):
+        if ($i != 0) echo ' > '; // separator
+        if ($i == $last_index): ?>
+            <span class="breadcrumb-current"><?= htmlspecialchars($crumb['title']); ?></span>
+        <?php else: ?>
+            <a href="<?= htmlspecialchars($crumb['url']); ?>"><?= htmlspecialchars($crumb['title']); ?></a>
+        <?php endif;
+    endforeach;
+    ?>
 </nav>
 <?php endif; ?>
