@@ -41,37 +41,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>When was the referral made?</p>
         <div class="radio-option">
             <label>
-                <input type="radio" name="ref_date" value="1yr" required onclick="showSpecialtySection()">
+                <input type="radio" name="ref_date" value="1yr" required>
                 Within the last year
             </label>
         </div>
         <div class="radio-option">
             <label>
-                <input type="radio" name="ref_date" value="1-2yr" required onclick="showSpecialtySection()">
+                <input type="radio" name="ref_date" value="1-2yr" required>
                 Between 1-2 years
             </label>
         </div>
         <div class="radio-option">
             <label>
-                <input type="radio" name="ref_date" value="unknown" required onclick="showSpecialtySection()">
+                <input type="radio" name="ref_date" value="unknown" required>
                 Not sure
             </label>
         </div>
 
         <!-- Specialty question section -->
-        <div id="specialty-section" style="display:none; margin-top:20px;">
+        <div id="specialty-section" style="margin-top:20px;">
             <p>Do you know the specialty?</p>
 
             <div class="radio-option">
                 <label>
-                    <input type="radio" name="ref_spec" value="yes" required onclick="showSpecInput(true)">
+                    <input type="radio" name="ref_spec" value="yes" required onchange="showSpecInput(true)">
                     Yes
                 </label>
             </div>
 
             <div class="radio-option">
                 <label>
-                    <input type="radio" name="ref_spec" value="no" required onclick="showSpecInput(false)">
+                    <input type="radio" name="ref_spec" value="no" required onchange="showSpecInput(false)">
                     No, I'm not sure
                 </label>
             </div>
@@ -92,9 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script>
-function showSpecialtySection() {
-    document.getElementById('specialty-section').style.display = 'block';
-}
 function showSpecInput(show) {
     document.getElementById('spec-input-container').style.display = show ? 'block' : 'none';
 }
