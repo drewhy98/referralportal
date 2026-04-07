@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Save NHS number from previous form
-if(isset($_POST['nhs_number'])){
-    $_SESSION['nhs_number'] = $_POST['nhs_number'];
+// Make sure NHS number exists in session
+if (!isset($_SESSION['nhs_number']) || empty($_SESSION['nhs_number'])) {
+    header("Location: nhs-number.php?msg=" . urlencode("Please provide your NHS number first"));
+    exit();
 }
-
 
 include "includes/header.php";
 ?>
