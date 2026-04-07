@@ -3,7 +3,7 @@
 $type = $_POST['assistance_type'];
 
 if($type == "yes"){
-    header("Location: guidedhelp-date.php");
+    header("Location: guidedhelp.php");
 }
 
 if($type == "no"){
