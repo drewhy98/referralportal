@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NHS Referral Tracking</title>
+<title>NHS Wales Referral Tracking Portal</title>
 
 <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -20,7 +20,7 @@ src="assets/images/nhslogo.webp"
 alt="NHS Wales"
 class="logo">
 
-<h1 class="service-name">Referral Tracking Service</h1>
+<h1 class="service-name">NHS Wales Referral Tracking Portal</h1>
 </span>
 
 </div>
