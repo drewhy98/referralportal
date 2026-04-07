@@ -1,15 +1,15 @@
 <?php include "includes/header.php"; ?>
 
-<h1>Check your hospital referral status</h1>
+<h1>Check your NHS referral status</h1>
 
 <div class="panel">
 
 <p>Use this service to check the progress of a referral made by your GP.</p>
 
 <ul>
-<li>see whether your referral has been received</li>
-<li>check if an appointment has been scheduled</li>
-<li>view the current status of your referral</li>
+<li>See whether your referral has been sent</li>
+<li>Check if an appointment has been scheduled</li>
+<li>View the current status of your referral</li>
 </ul>
 
 <h2>Before you start</h2>
