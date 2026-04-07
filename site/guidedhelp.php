@@ -5,9 +5,17 @@ include "refmatcher.php";
 
 $match = null;
 
+// Ensure NHS number is passed from previous page
+$nhs_number = trim($_POST['nhs_number'] ?? '');
+
+if (!$nhs_number) {
+    // Redirect if NHS number missing
+    header("Location: assistancechecker.php?msg=" . urlencode("Please provide your NHS number first"));
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $nhs_number = trim($_POST['nhs_number'] ?? '');
     $ref_date = $_POST['ref_date'] ?? 'unknown';
     $ref_spec_known = $_POST['ref_spec'] ?? 'no';
     $spec_name = trim($_POST['spec_name'] ?? '');
@@ -28,10 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if (!$match): ?>
     <form action="" method="POST">
         <h1>Referral Details</h1>
-
-        <!-- NHS Number -->
-        <label for="nhs_number">Enter NHS number:</label>
-        <input type="text" name="nhs_number" id="nhs_number" required style="margin-bottom:15px; display:block;">
 
         <!-- Referral date question -->
         <p>When was the referral made?</p>
