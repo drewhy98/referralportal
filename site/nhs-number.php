@@ -11,7 +11,7 @@ if(isset($_POST['nhs_number'])){
 
 <div class="panel">
 
-  <form action="assistancechecker.php" method="POST">
+ <form action="nhs-number.php" method="POST">
 
     <h1>What is your NHS number?</h1>
 
