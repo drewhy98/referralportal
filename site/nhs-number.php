@@ -1,8 +1,9 @@
 <?php
-session_start();
+session_start(); 
 
+// Only store if posted
 if(isset($_POST['nhs_number'])){
-    $_SESSION['nhs_number'] = $_POST['nhs_number'];
+    $_SESSION['nhs_number'] = trim($_POST['nhs_number']); // trim spaces
     header("Location: assistancechecker.php");
     exit();
 }
