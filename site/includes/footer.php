@@ -1,7 +1,7 @@
 </main>
 
 <footer class="footer">
-<p>NHS Referral Portal Prototype</p>
+<p>NHS Wales Referral Portal Prototype</p>
 </footer>
 
 </body>
