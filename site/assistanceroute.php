@@ -1,13 +1,13 @@
 <?php
 
-$type = $_POST['user_type'];
+$type = $_POST['assistance_type'];
 
-if($type == "self"){
-    header("Location: nhs-number.php");
+if($type == "yes"){
+    header("Location: guidedhelp.php");
 }
 
-if($type == "proxy"){
-    header("Location: proxy-details.php");
+if($type == "no"){
+    header("Location: dashboard.php");
 }
 
 exit();
