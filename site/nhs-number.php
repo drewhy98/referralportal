@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(isset($_POST['nhs_number'])){
+    $_SESSION['nhs_number'] = $_POST['nhs_number'];
+    header("Location: assistancechecker.php");
+    exit();
+}
+
 <?php include "includes/header.php"; ?>
 
 <div class="panel">
