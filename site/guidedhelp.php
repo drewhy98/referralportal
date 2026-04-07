@@ -60,29 +60,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </label>
         </div>
 
-<!-- Specialty question section -->
-<div id="specialty-section" style="display:none; margin-top:20px;">
-    <p>Do you know the specialty?</p>
+        <!-- Specialty question section, hidden initially -->
+        <div id="specialty-section" style="display:none; margin-top:20px;">
+            <p>Do you know the specialty?</p>
 
-    <div class="radio-option">
-        <label>
-            <input type="radio" name="ref_spec" value="yes" required onchange="showSpecInput(true)">
-            Yes
-        </label>
-    </div>
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="ref_spec" value="yes" required onchange="showSpecInput(true)">
+                    Yes
+                </label>
+            </div>
 
-    <div class="radio-option">
-        <label>
-            <input type="radio" name="ref_spec" value="no" required onchange="showSpecInput(false)">
-            No, I'm not sure
-        </label>
-    </div>
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="ref_spec" value="no" required onchange="showSpecInput(false)">
+                    No, I'm not sure
+                </label>
+            </div>
 
-    <div id="spec-input-container" style="display:none; margin-top:10px;">
-        <label for="spec_name">Enter the specialty:</label>
-        <input type="text" name="spec_name" id="spec_name">
-    </div>
-</div>
+            <div id="spec-input-container" style="display:none; margin-top:10px;">
+                <label for="spec_name">Enter the specialty:</label>
+                <input type="text" name="spec_name" id="spec_name">
+            </div>
+        </div>
+
         <button type="submit" style="margin-top:20px;">Check Referral</button>
     </form>
 <?php else: ?>
@@ -96,6 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function showSpecInput(show) {
     document.getElementById('spec-input-container').style.display = show ? 'block' : 'none';
 }
+
+// Show specialty section only after a referral date is selected
+document.querySelectorAll('input[name="ref_date"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        document.getElementById('specialty-section').style.display = 'block';
+    });
+});
 </script>
 
 <?php include "includes/footer.php"; ?>
