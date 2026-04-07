@@ -3,7 +3,7 @@ session_start();
 include "includes/dbconnect.php";
 $breadcrumbs = [
     ['title' => 'Home', 'url' => 'index.php'],
-    ['title' => 'Find Referrals with assistance', 'url' => 'assistancechecker.php'],
+    ['title' => 'Find Referrals With Assistance', 'url' => 'assistancechecker.php'],
     ['title' => 'View Referral Dashboard', 'url' => 'dashboard.php'],
 ];
 include "includes/header.php";
