@@ -6,57 +6,63 @@
 
     <h1>Referral Details</h1>
 
+    <!-- Referral date question -->
     <p>When was the referral made?</p>
-
     <div class="radio-option">
       <label>
-        <input type="radio" name="ref_date" value="1yr" required>
+        <input type="radio" name="ref_date" value="1yr" required onclick="showSpecialtySection()">
         Within the last year
       </label>
     </div>
-
     <div class="radio-option">
       <label>
-        <input type="radio" name="ref_date" value="1-2yr" required>
+        <input type="radio" name="ref_date" value="1-2yr" required onclick="showSpecialtySection()">
         Between 1-2 years
       </label>
     </div>
-
     <div class="radio-option">
       <label>
-        <input type="radio" name="ref_date" value="unknown" required>
+        <input type="radio" name="ref_date" value="unknown" required onclick="showSpecialtySection()">
         Not sure
       </label>
     </div>
 
-    <p>Do you know the specialty?</p>
+    <!-- Specialty question section, hidden initially -->
+    <div id="specialty-section" style="display:none; margin-top:20px;">
+      <p>Do you know the specialty?</p>
 
-    <div class="radio-option">
-      <label>
-        <input type="radio" name="ref_spec" value="yes" required onclick="showSpecInput(true)">
-        Yes
-      </label>
+      <div class="radio-option">
+        <label>
+          <input type="radio" name="ref_spec" value="yes" required onclick="showSpecInput(true)">
+          Yes
+        </label>
+      </div>
+
+      <div class="radio-option">
+        <label>
+          <input type="radio" name="ref_spec" value="no" required onclick="showSpecInput(false)">
+          No, I'm not sure
+        </label>
+      </div>
+
+      <!-- Hidden text input for specialty -->
+      <div id="spec-input-container" style="display:none; margin-top:10px;">
+        <label for="spec_name">Enter the specialty:</label>
+        <input type="text" name="spec_name" id="spec_name">
+      </div>
     </div>
 
-    <div class="radio-option">
-      <label>
-        <input type="radio" name="ref_spec" value="no" required onclick="showSpecInput(false)">
-        No, I'm not sure
-      </label>
-    </div>
-
-    <div id="spec-input-container" style="display:none; margin-top:10px;">
-      <label for="spec_name">Enter the specialty:</label>
-      <input type="text" name="spec_name" id="spec_name">
-    </div>
-
-    <button type="submit">Check Referral</button>
+    <button type="submit" style="margin-top:20px;">Check Referral</button>
 
   </form>
 
 </div>
 
 <script>
+function showSpecialtySection() {
+    document.getElementById('specialty-section').style.display = 'block';
+}
+
 function showSpecInput(show) {
     document.getElementById('spec-input-container').style.display = show ? 'block' : 'none';
 }
@@ -83,14 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]
     ];
 
-    // If unsure on date or specialty
+    // Redirect if unsure
     if ($ref_date === 'unknown' || ($ref_spec_known === 'no' && $spec_name === '')) {
         header("Location: dashboard.php?msg=" . urlencode("Not able to locate a match"));
         exit;
     }
 
     $match = null;
-
     foreach ($referrals as $ref) {
         if ($ref['date'] === $ref_date) {
             if ($ref_spec_known === 'yes' && strcasecmp(trim($ref['specialty']), $spec_name) === 0) {
