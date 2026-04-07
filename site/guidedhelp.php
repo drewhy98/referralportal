@@ -6,8 +6,8 @@ include "refmatcher.php";
 
 $breadcrumbs = [
     ['title' => 'Home', 'url' => 'index.php'],
-    ['title' => 'Start Again', 'url' => 'assistancechecker.php'],
-    ['title' => 'View Referral Dashboard', 'url' => 'dashboard.php'],
+    ['title' => 'Assistance Check', 'url' => 'assistancechecker.php'],
+    ['title' => 'Find Referral', 'url' => 'guidedhelp.php'],
 ];
 include "includes/header.php";
 
