@@ -16,7 +16,7 @@
 <div class="header-inner">
 
 <img 
-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeM_VTB_wCGEEJKPNMiUOgEHqXyVLOMnE4Ug&s"
+src="assets/images/nhslogo.webp"
 alt="NHS Wales"
 class="logo">
 
