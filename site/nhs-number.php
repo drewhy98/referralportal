@@ -1,17 +1,21 @@
 <?php include "includes/header.php"; ?>
 
-<form action="dashboard.php" method="POST">
+<div class="panel">
 
-<h1>What is your NHS number?</h1>
+  <form action="dashboard.php" method="POST">
 
-<p class="hint">
-This is a 10 digit number like 999 123 4567.
-</p>
+    <h1>What is your NHS number?</h1>
 
-<input type="text" name="nhs_number" required>
+    <p class="hint">
+      This is a 10 digit number like 999 123 4567.
+    </p>
 
-<button type="submit">Continue</button>
+    <input type="text" name="nhs_number" required>
 
-</form>
+    <button type="submit">Continue</button>
+
+  </form>
+
+</div>
 
 <?php include "includes/footer.php"; ?>
