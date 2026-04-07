@@ -1,37 +1,34 @@
-<?php include "includes/dbconnect.php";
+<?php
+include "includes/dbconnect.php";
 
-// Only process if form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $nhs_number = $_POST['nhs_number'] ?? '';  // user’s NHS number
-    $ref_date = $_POST['ref_date'] ?? 'unknown';
-    $ref_spec_known = $_POST['ref_spec'] ?? 'no';
-    $spec_name = trim($_POST['spec_name'] ?? '');
-
-    // Find user in DB
+/**
+ * Find a referral for a user
+ *
+ * @param PDO $db
+ * @param string $nhs_number
+ * @param string $ref_date
+ * @param string $spec_name
+ * @param bool $spec_known
+ * @return array|null
+ */
+function findReferral($db, $nhs_number, $ref_date, $spec_name = '', $spec_known = false) {
+    // Find user by NHS number
     $stmt = $db->prepare("SELECT id FROM users WHERE nhs_number = ?");
     $stmt->execute([$nhs_number]);
-    $user = $stmt->fetch();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user) {
-        // User not found → redirect
-        header("Location: dashboard.php?msg=" . urlencode("Not able to locate a match"));
-        exit;
-    }
+    if (!$user) return null;
 
     $user_id = $user['id'];
 
-    // Build query to check referrals
-    if ($ref_spec_known === 'yes') {
-        // Check both date and specialty
+    if ($spec_known && $spec_name !== '') {
         $stmt = $db->prepare("
             SELECT * FROM referrals 
             WHERE user_id = ? AND ref_date = ? AND LOWER(specialty) = LOWER(?)
             LIMIT 1
         ");
-        $stmt->execute([$user_id, $ref_date, $spec_name]);
+        $stmt->execute([$user_id, $ref_date, trim($spec_name)]);
     } else {
-        // User doesn't know specialty → only check date
         $stmt = $db->prepare("
             SELECT * FROM referrals 
             WHERE user_id = ? AND ref_date = ?
@@ -40,18 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$user_id, $ref_date]);
     }
 
-    $referral = $stmt->fetch();
-
-    if ($referral) {
-        // Match found → display details
-        echo '<div class="panel" style="margin-top:20px;">';
-        echo '<h2>Referral Details Found</h2>';
-        echo '<p>' . htmlspecialchars($referral['details']) . '</p>';
-        echo '</div>';
-    } else {
-        // No match → redirect to dashboard
-        header("Location: dashboard.php?msg=" . urlencode("Not able to locate a match"));
-        exit;
-    }
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ?>
