@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ref_spec_known = $_POST['ref_spec'] ?? 'no';
     $spec_name = trim($_POST['spec_name'] ?? '');
 
-    // 1️⃣ Find user in DB
+    // Find user in DB
     $stmt = $db->prepare("SELECT id FROM users WHERE nhs_number = ?");
     $stmt->execute([$nhs_number]);
     $user = $stmt->fetch();
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user_id = $user['id'];
 
-    // 2️⃣ Build query to check referrals
+    // Build query to check referrals
     if ($ref_spec_known === 'yes') {
         // Check both date and specialty
         $stmt = $db->prepare("
